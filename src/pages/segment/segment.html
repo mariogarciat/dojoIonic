@@ -1,0 +1,65 @@
+<!--
+  Generated template for the SegmentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>segment</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="pestanas">
+      <ion-segment-button value="usuarios" (click)="downUsuarios()">
+        Usuarios
+      </ion-segment-button>
+      <ion-segment-button value="fotos" (click)="downFotos()">
+        Fotos
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="pestanas">
+    <ion-list *ngSwitchCase="'usuarios'">
+      <ion-item *ngFor="let usuario of usuarios">
+        <ion-card>
+
+          <ion-card-header>
+            {{usuario.name}}
+          </ion-card-header>
+        
+          <ion-card-content>
+            <h1>username: {{usuario.username}}</h1>
+            <h1>email: {{usuario.email}}</h1>
+            <h1>phone: {{usuario.phone}}</h1>
+          </ion-card-content>
+        
+        </ion-card>
+      </ion-item>
+      ...
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'fotos'">
+      <ion-item *ngFor="let foto of fotos | slice:0:10; let i = index">
+        <ion-card>
+
+          <ion-card-header>
+            {{usuarios[i].name}}
+          </ion-card-header>
+        
+          <ion-card-content>
+            <img src="{{foto.url}}">
+          </ion-card-content>
+        
+        </ion-card>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+</ion-content>
